@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adbqr"
+version = "1.3.0"
+description = "A command-line tool for pairing devices with ADB via QR code."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Finn Coffey"}]
+dependencies = [
+    "click>=8.1.7",
+    "zeroconf>=0.131.0",
+    "qrcode>=7.4.2",
+    "nanoid>=2.0.0"
+]
+
+[project.scripts]
+adbqr = "adbqr.main:cli"
