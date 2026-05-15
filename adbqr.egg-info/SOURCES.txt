@@ -1,0 +1,17 @@
+LICENSE.md
+README.md
+pyproject.toml
+adbqr/__init__.py
+adbqr/adb.py
+adbqr/connect.py
+adbqr/main.py
+adbqr/pair_code.py
+adbqr/pair_qr.py
+adbqr/qr.py
+adbqr/select.py
+adbqr.egg-info/PKG-INFO
+adbqr.egg-info/SOURCES.txt
+adbqr.egg-info/dependency_links.txt
+adbqr.egg-info/entry_points.txt
+adbqr.egg-info/requires.txt
+adbqr.egg-info/top_level.txt

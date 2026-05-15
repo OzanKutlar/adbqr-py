@@ -16,7 +16,8 @@ class QrRenderer:
 
     def render(self):
         for y in range(0, self.height, 2):
-            row = ""
+            # \x1b[30;47m forces black foreground (30) and white background (47)
+            row = "\x1b[30;47m"
             for x in range(self.width):
                 top_dark = self.color(x, y)
                 bottom_dark = self.color(x, y + 1)
@@ -29,6 +30,8 @@ class QrRenderer:
                     row += '▀'
                 elif top_dark and bottom_dark:
                     row += '█'
+            # Reset colors at the end of the line so it doesn't bleed
+            row += "\x1b[0m"
             print(row)
 
     def color(self, x: int, y: int) -> bool:
