@@ -19,3 +19,6 @@ dependencies = [
 
 [project.scripts]
 adbqr = "adbqr.main:cli"
+
+[tool.setuptools]
+packages = ["adbqr"]

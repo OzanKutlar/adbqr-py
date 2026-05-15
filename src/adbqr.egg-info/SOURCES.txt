@@ -1,0 +1,9 @@
+LICENSE.md
+README.md
+pyproject.toml
+src/adbqr.egg-info/PKG-INFO
+src/adbqr.egg-info/SOURCES.txt
+src/adbqr.egg-info/dependency_links.txt
+src/adbqr.egg-info/entry_points.txt
+src/adbqr.egg-info/requires.txt
+src/adbqr.egg-info/top_level.txt
