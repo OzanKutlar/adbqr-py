@@ -1,6 +1,7 @@
 from . import PAIRING_SERVICE
 from .select import select_device
 from .adb import run_adb
+from .connect import auto_connect_to_ip
 
 HELP_MESSAGE = """\
 \x1B[1mPair with pairing code\x1B[0m
@@ -25,6 +26,7 @@ def run():
     
     result = run_adb(["pair", f"{address}:{port}", password])
     if result.returncode == 0:
-        print("Connected!")
+        print("Paired successfully!")
+        auto_connect_to_ip(address)
     else:
-        print("Connection failed.")
+        print("Pairing failed.")

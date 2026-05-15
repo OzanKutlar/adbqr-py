@@ -15,26 +15,16 @@ class QrRenderer:
         self.height = len(self.matrix)
 
     def render(self):
-        for y in range(0, self.height, 2):
-            # \x1b[30;47m forces black foreground (30) and white background (47)
-            row = "\x1b[30;47m"
+        print()
+        for y in range(self.height):
+            row = "  " # Left indent for visual padding
             for x in range(self.width):
-                top_dark = self.color(x, y)
-                bottom_dark = self.color(x, y + 1)
-
-                if not top_dark and not bottom_dark:
-                    row += ' '
-                elif not top_dark and bottom_dark:
-                    row += '▄'
-                elif top_dark and not bottom_dark:
-                    row += '▀'
-                elif top_dark and bottom_dark:
-                    row += '█'
-            # Reset colors at the end of the line so it doesn't bleed
-            row += "\x1b[0m"
+                if self.matrix[y][x]:
+                    # Black background, two spaces wide for square aspect ratio
+                    row += "\x1b[40m  "
+                else:
+                    # White background, two spaces wide
+                    row += "\x1b[47m  "
+            row += "\x1b[0m" # Reset color at end of line
             print(row)
-
-    def color(self, x: int, y: int) -> bool:
-        if x >= self.width or y >= self.height:
-            return False
-        return self.matrix[y][x]
+        print()

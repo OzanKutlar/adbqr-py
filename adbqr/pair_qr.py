@@ -1,11 +1,13 @@
 import socket
 import threading
-from nanoid import generate
+import secrets
+import string
 from zeroconf import ServiceBrowser, Zeroconf, ServiceListener
 
 from . import PAIRING_SERVICE
 from .qr import QrRenderer
 from .adb import run_adb
+from .connect import auto_connect_to_ip
 
 HELP_MESSAGE = """\
 \x1B[1mPair with QR code\x1B[0m
@@ -17,6 +19,10 @@ Then, on your Android device:
 3. Select \x1B[1mPair device with QR code\x1B[0m.
 4. Scan the following QR code:
 """
+
+def generate_random_string(length: int) -> str:
+    alphabet = string.ascii_letters + string.digits
+    return "".join(secrets.choice(alphabet) for _ in range(length))
 
 class PairingListener(ServiceListener):
     def __init__(self, service_name, match_event, device_info):
@@ -41,8 +47,8 @@ class PairingListener(ServiceListener):
 def run():
     print(HELP_MESSAGE)
     
-    service_name = f"adbqr-{generate(size=4)}"
-    password = generate(size=6)
+    service_name = f"adbqr-{generate_random_string(4)}"
+    password = generate_random_string(6)
     
     data = f"WIFI:T:ADB;S:{service_name};P:{password};;"
     renderer = QrRenderer(data)
@@ -65,7 +71,8 @@ def run():
         result = run_adb(["pair", f"{address}:{port}", password])
         
         if result.returncode == 0:
-            print("Paired!")
+            print("Paired successfully!")
+            auto_connect_to_ip(address)
         else:
             print("Pairing failed.")
     finally:
