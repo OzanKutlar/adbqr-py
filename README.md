@@ -8,7 +8,11 @@ This is a Python fork/port of the original Rust project: [soxfox42/adbqr](https:
 
 Requires Python 3.10+.
 
+First, clone this repository and navigate into the directory:
+
 ```bash
+git clone https://github.com/OzanKutlar/adbqr-py.git
+cd adbqr-py
 pip install .
 # or for development:
 pip install -e .
@@ -28,6 +32,8 @@ adbqr
 adbqr pair
 
 # Initiate manual pairing via pairing code.
+# This is still faster than a regular `adb pair` command as the tool automatically 
+# detects phones on the network that have entered into "pair with code" mode.
 adbqr manual
 
 # Connect to an already paired device on the network.
