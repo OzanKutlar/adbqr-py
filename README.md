@@ -4,6 +4,16 @@ adbqr is a simple command line tool to manage wireless ADB connections easily, l
 
 This is a Python fork/port of the original Rust project: [soxfox42/adbqr](https://github.com/soxfox42/adbqr). It provides seamless installation and dependency management for Python users.
 
+## Why use this?
+
+Connecting your device via wireless ADB can be tedious if you are not using Android Studio. For instance, when using wireless connections for non-development actions like mirroring with [scrcpy](https://github.com/genymobile/scrcpy), you normally have to manually look up and type your phone's IP address and port to pair and connect.
+
+Although modern Android devices natively support QR code pairing, the standard `adb` CLI tool has no built-in way to generate or display these QR codes.
+
+**adbqr** solves this by:
+- **Printing a pairing QR code** directly in your terminal, which you can scan with your phone to pair and connect instantly.
+- **Auto-discovering devices** on your local network that have "Pair device with pairing code" enabled, mimicking Android Studio's seamless discovery so you don't have to manually type in IP addresses or ports.
+
 ## Installation
 
 Requires Python 3.10+.
