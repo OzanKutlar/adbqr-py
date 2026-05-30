@@ -49,5 +49,12 @@ Make sure your Android device is on the same network as your computer.
 
 ## Screenshots
 
+### Screenshot of QR mode
+
 ![adbqr QR Mode Screenshot](screenshot_qr.png)
+
+<br>
+
+### Screenshot of manual mode
+
 ![adbqr Manual Mode Screenshot](screenshot_manual.png)
