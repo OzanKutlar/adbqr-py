@@ -45,10 +45,18 @@ adbqr pair
 # This is still faster than a regular `adb pair` command as the tool automatically 
 # detects phones on the network that have entered into "pair with code" mode.
 adbqr manual
-
 # Connect to an already paired device on the network.
 adbqr connect
+
+# Disconnect all devices and restart the ADB server.
+# Use this when ADB gets into a bad state (stale "offline" devices,
+# connections that refuse to establish) instead of reaching for
+# Android Studio's "Restart ADB server" button.
+adbqr reset
 ```
+
+> [!WARNING]
+> `adbqr reset` restarts the ADB daemon, which drops **every** active connection, including USB-attached devices and any running `scrcpy` session.
 
 **Pairing Instructions:**
 Make sure your Android device is on the same network as your computer.

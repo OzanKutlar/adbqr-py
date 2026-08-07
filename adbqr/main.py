@@ -1,5 +1,5 @@
 import click
-from . import pair_qr, pair_code, connect, adb
+from . import pair_qr, pair_code, connect, reset, adb
 
 @click.group(invoke_without_command=True)
 @click.pass_context
@@ -23,6 +23,11 @@ def manual():
 def connect_cmd():
     """Connect to an already paired device."""
     connect.run()
+
+@cli.command("reset")
+def reset_cmd():
+    """Disconnect all devices and restart the ADB server."""
+    reset.run()
 
 if __name__ == "__main__":
     cli()
